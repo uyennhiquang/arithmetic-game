@@ -35,12 +35,14 @@ buttonStart.addEventListener("click", function () {
     questionEl.classList.remove("hidden");
     document.querySelector(".time-up").classList.add("hidden");
 
+    let timerInterval = setInterval(updateTimer, 1000);
+
     // Reset score
     scoreCurrent = 0;
     scoreCurrentEl.textContent = scoreCurrent;
 
     // Start timer
-    setInterval(updateTimer, 1000);
+    timerInterval;
     function updateTimer() {
       const minutes = Math.floor(time / 60);
       let seconds = time % 60;
@@ -50,6 +52,9 @@ buttonStart.addEventListener("click", function () {
       if (time > 0) time--;
       // When timeup
       else if (time === 0) {
+        // Reset timer
+        clearInterval(timerInterval);
+
         document.querySelector(".time-up").classList.remove("hidden");
         playing = false;
         if (scoreCurrent > highscore) {
