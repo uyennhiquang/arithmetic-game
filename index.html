@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Math Race</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <header>
+        <!-- Timer -->
+        <!-- <p class="timer">0:10</p> -->
+        <p><span class="timer">0:05</span> <span class="time-up hidden">Time up!</span></p>
+        <!-- Scores -->
+        <div class="scores">
+            <p>Score: <span class="current-score">0</span></p>
+            <p>Highscore: <span class="highscore">0</span></p>
+        </div>
+    </header>
+    <main>
+        <!-- Play area -->
+        <p id="blurb">A simple arithmetic game</p>
+        <div class="question hidden">
+            <p><span class="operand--0">1</span> <span class="operator">+</span> <span class="operand--1">1</span> =
+            </p>
+            <form class="answer-form">
+                <input type="input" class="answer-input">
+            </form>
+        </div>
+        <!-- Start -->
+        <button class="btn start">Start!</button>
+    </main>
+
+    <script src="./script.js" async defer></script>
+</body>
+
+</html>
