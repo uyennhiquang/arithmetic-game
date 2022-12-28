@@ -20,7 +20,7 @@ let highscore = 0;
 
 let operatorCurrent, playing;
 
-const startingMinutes = 5 / 60;
+const startingMinutes = 10 / 60;
 let time = startingMinutes * 60;
 
 const timerEl = document.querySelector(".timer");
@@ -43,7 +43,7 @@ buttonStart.addEventListener("click", function () {
 
     // Set starting time
     time = startingMinutes * 60;
-    timerEl.textContent = "0:05";
+    timerEl.textContent = "0:10";
     let timerInterval = setInterval(updateTimer, 1000);
 
     // Remove styling
