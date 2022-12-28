@@ -23,10 +23,20 @@ let time = startingMinutes * 60;
 
 const timerEl = document.querySelector(".timer");
 
+// Autofocus when start button is clicked
+$(".start").click(function () {
+  $(".answer-input").focus();
+});
+
 // Start game
 buttonStart.addEventListener("click", function () {
   if (!playing) {
     playing = true;
+
+    // Clear input field
+    answerInputEl.value = "";
+
+    // Set starting time
     time = startingMinutes * 60;
     timerEl.textContent = "0:05";
 
