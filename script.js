@@ -26,9 +26,10 @@ let time = startingMinutes * 60;
 const timerEl = document.querySelector(".timer");
 
 // Show localStorage highscore only when it's higher than 0
-if (localStorage.getItem("highscoreValue") > 0)
+if (localStorage.getItem("highscoreValue") > 0) {
   highscoreEl.textContent = localStorage.getItem("highscoreValue");
-else highscoreEl.textContent = 0;
+  highscore = Number(localStorage.getItem("highscoreValue"));
+} else highscoreEl.textContent = 0;
 
 // Start game
 buttonStart.addEventListener("click", function () {
