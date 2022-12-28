@@ -14,6 +14,7 @@ const answerForm = document.querySelector(".answer-form");
 const scoreCurrentEl = document.querySelector(".current-score");
 let scoreCurrent = 0;
 const highscoreEl = document.querySelector(".highscore");
+
 let highscore = 0;
 
 let operatorCurrent, playing;
@@ -22,6 +23,10 @@ const startingMinutes = 5 / 60;
 let time = startingMinutes * 60;
 
 const timerEl = document.querySelector(".timer");
+
+// Show localStorage highscore only when it's higher than 0
+if (localStorage.getItem("highscoreValue") > 0)
+  highscoreEl.textContent = localStorage.getItem("highscoreValue");
 
 // Start game
 buttonStart.addEventListener("click", function () {
@@ -74,9 +79,9 @@ buttonStart.addEventListener("click", function () {
         // Set highscore
         if (scoreCurrent > highscore) {
           // highscore = scoreCurrent;
-          localStorage.setItem("highscore", scoreCurrent);
-          highscore = localStorage.getItem("highscore");
-          highscoreEl.textContent = highscore;
+          highscore = scoreCurrent;
+          localStorage.setItem("highscoreValue", highscore);
+          highscoreEl.textContent = localStorage.getItem("highscoreValue");
         }
       }
     }
