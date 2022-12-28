@@ -31,9 +31,11 @@ buttonStart.addEventListener("click", function () {
     playing = true;
     time = startingMinutes * 60;
     timerEl.textContent = "0:05";
+
     document.querySelector("#blurb").classList.add("hidden");
     questionEl.classList.remove("hidden");
     document.querySelector(".time-up").classList.add("hidden");
+    document.querySelector("body").style.removeProperty("background");
 
     let timerInterval = setInterval(updateTimer, 1000);
 
@@ -56,6 +58,7 @@ buttonStart.addEventListener("click", function () {
         clearInterval(timerInterval);
 
         document.querySelector(".time-up").classList.remove("hidden");
+        document.querySelector("body").style.background = "#60b347";
         playing = false;
         if (scoreCurrent > highscore) {
           highscore = scoreCurrent;
