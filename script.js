@@ -40,10 +40,13 @@ buttonStart.addEventListener("click", function () {
     time = startingMinutes * 60;
     timerEl.textContent = "0:05";
 
+    // Remove styling
     document.querySelector("#blurb").classList.add("hidden");
     questionEl.classList.remove("hidden");
     document.querySelector(".time-up").classList.add("hidden");
     document.querySelector("body").style.removeProperty("background");
+    questionEl.style.removeProperty("color");
+    answerInputEl.style.removeProperty("color");
 
     let timerInterval = setInterval(updateTimer, 1000);
 
@@ -69,7 +72,9 @@ buttonStart.addEventListener("click", function () {
         document.querySelector("body").style.background = "#60b347";
         playing = false;
         if (scoreCurrent > highscore) {
-          highscore = scoreCurrent;
+          // highscore = scoreCurrent;
+          localStorage.setItem("highscore", scoreCurrent);
+          highscore = localStorage.getItem("highscore");
           highscoreEl.textContent = highscore;
         }
       }
