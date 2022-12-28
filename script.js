@@ -37,6 +37,7 @@ buttonStart.addEventListener("click", function () {
     // Set starting time
     time = startingMinutes * 60;
     timerEl.textContent = "0:05";
+    let timerInterval = setInterval(updateTimer, 1000);
 
     // Remove styling
     document.querySelector("#blurb").classList.add("hidden");
@@ -45,8 +46,6 @@ buttonStart.addEventListener("click", function () {
     document.querySelector("body").style.removeProperty("background");
     questionEl.style.removeProperty("color");
     answerInputEl.style.removeProperty("color");
-
-    let timerInterval = setInterval(updateTimer, 1000);
 
     // Reset score
     scoreCurrent = 0;
@@ -63,12 +62,16 @@ buttonStart.addEventListener("click", function () {
       if (time > 0) time--;
       // When timeup
       else if (time === 0) {
+        playing = false;
+
         // Reset timer
         clearInterval(timerInterval);
 
+        // Show timeup styling
         document.querySelector(".time-up").classList.remove("hidden");
         document.querySelector("body").style.background = "#60b347";
-        playing = false;
+
+        // Set highscore
         if (scoreCurrent > highscore) {
           // highscore = scoreCurrent;
           localStorage.setItem("highscore", scoreCurrent);
