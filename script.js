@@ -25,8 +25,6 @@ const timerEl = document.querySelector(".timer");
 
 // Start game
 buttonStart.addEventListener("click", function () {
-  // TODO: Reset game when time is 0
-
   if (!playing) {
     playing = true;
     time = startingMinutes * 60;
@@ -149,4 +147,11 @@ answerForm.addEventListener("submit", (e) => {
     }
   }
   e.preventDefault();
+});
+
+//paste this code under the head tag or in a separate js file.
+// Wait for window load
+$(window).load(function () {
+  // Animate loader off screen
+  $(".se-pre-con").fadeOut("slow");
 });
