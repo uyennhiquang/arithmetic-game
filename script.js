@@ -1,6 +1,7 @@
 "use strict";
 
 const buttonStart = document.querySelector(".start");
+const buttonResetHighscore = document.querySelector(".reset-highscore");
 const questionEl = document.querySelector(".question");
 
 const operandOneEl = document.querySelector(".operand--0");
@@ -27,6 +28,7 @@ const timerEl = document.querySelector(".timer");
 // Show localStorage highscore only when it's higher than 0
 if (localStorage.getItem("highscoreValue") > 0)
   highscoreEl.textContent = localStorage.getItem("highscoreValue");
+else highscoreEl.textContent = 0;
 
 // Start game
 buttonStart.addEventListener("click", function () {
@@ -168,6 +170,13 @@ answerForm.addEventListener("submit", (e) => {
     }
   }
   e.preventDefault();
+});
+
+// Clear highscore
+buttonResetHighscore.addEventListener("click", () => {
+  highscore = 0;
+  localStorage.removeItem("highscoreValue");
+  highscoreEl.textContent = 0;
 });
 
 //paste this code under the head tag or in a separate js file.
