@@ -1,29 +1,45 @@
 "use strict";
 
+// TODO:
+// Timer buttons
+// New highscore note
+// Clarification that enter = submitting answer
+
+// Buton elements
 const buttonStart = document.querySelector(".start");
 const buttonResetHighscore = document.querySelector(".reset-highscore");
-const questionEl = document.querySelector(".question");
+const buttonHowTo = document.querySelector(".how-to");
 
+// Question elements
+const questionEl = document.querySelector(".question");
 const operandOneEl = document.querySelector(".operand--0");
 const operandTwoEl = document.querySelector(".operand--1");
 const operatorEl = document.querySelector(".operator");
 const operatorArr = ["+", "-", "*", "÷"];
 
+// Answer input elements
 const answerInputEl = document.querySelector(".answer-input");
 const answerForm = document.querySelector(".answer-form");
 
+// Score elements
 const scoreCurrentEl = document.querySelector(".current-score");
 let scoreCurrent = 0;
 const highscoreEl = document.querySelector(".highscore");
-
 let highscore = 0;
 
+// Misc variables
 let operatorCurrent, playing;
 
+// Timer elements/variables
 const startingMinutes = 10 / 60;
 let time = startingMinutes * 60;
 
 const timerEl = document.querySelector(".timer");
+
+// Toggle how-to modal elements
+const modalEl = document.querySelector(".modal");
+const modalCloseEl = document.querySelector(".close-modal");
+const modalOverlayEl = document.querySelector(".overlay");
 
 // Show localStorage highscore only when it's higher than 0
 if (localStorage.getItem("highscoreValue") > 0) {
@@ -174,10 +190,30 @@ answerForm.addEventListener("submit", (e) => {
 });
 
 // Clear highscore
-buttonResetHighscore.addEventListener("click", () => {
+buttonResetHighscore.addEventListener("click", function () {
   highscore = 0;
   localStorage.removeItem("highscoreValue");
   highscoreEl.textContent = 0;
+});
+
+// Show How-to modal
+buttonHowTo.addEventListener("click", function () {
+  modalEl.classList.remove("hidden");
+  modalOverlayEl.classList.remove("hidden");
+});
+
+// Close modal
+const closeModal = function () {
+  modalEl.classList.add("hidden");
+  modalOverlayEl.classList.add("hidden");
+};
+
+modalCloseEl.addEventListener("click", closeModal);
+modalOverlayEl.addEventListener("click", closeModal);
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !modalEl.classList.contains("hidden")) {
+    closeModal();
+  }
 });
 
 //paste this code under the head tag or in a separate js file.
