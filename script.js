@@ -3,7 +3,6 @@
 // TODO:
 // Timer buttons
 // New highscore note
-// Clarification that enter = submitting answer
 
 // Buton elements
 const buttonStart = document.querySelector(".start");
@@ -67,6 +66,8 @@ buttonStart.addEventListener("click", function () {
     document.querySelector("#blurb").classList.add("hidden");
     questionEl.classList.remove("hidden");
     document.querySelector(".time-up").classList.add("hidden");
+    document.querySelector(".new-highscore").classList.add("hidden");
+
     document.querySelector("body").style.removeProperty("background");
     questionEl.style.removeProperty("color");
     answerInputEl.style.removeProperty("color");
@@ -101,6 +102,7 @@ buttonStart.addEventListener("click", function () {
           highscore = scoreCurrent;
           localStorage.setItem("highscoreValue", highscore);
           highscoreEl.textContent = localStorage.getItem("highscoreValue");
+          document.querySelector(".new-highscore").classList.remove("hidden");
         }
       }
     }
@@ -215,6 +217,12 @@ document.addEventListener("keydown", function (e) {
     closeModal();
   }
 });
+
+/* if (playing) {
+  buttonHowTo.classList.add("hidden");
+  buttonStart.classList.add("hidden");
+  buttonResetHighscore.classList.add("hidden");
+} */
 
 //paste this code under the head tag or in a separate js file.
 // Wait for window load
